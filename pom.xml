@@ -33,10 +33,10 @@
 
     <properties>
         <!-- app.data -->
-        <app.name>Utility</app.name>
+        <app.name>JavaFXUtility</app.name>
         <app.description>Utility Library for other projects</app.description>
         <app.url></app.url>
-        <app.version>0.0.0.1</app.version>
+        <app.version>0.0.0.3</app.version>
         <app.build>DEV</app.build>
         <app.preview>false</app.preview>
 
@@ -44,21 +44,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--Versions for project-->
+        <version.haevn.utils>0.0.0.4</version.haevn.utils>
         <version.commons-io>2.11.0</version.commons-io>
         <version.commons-lang3>3.12.0</version.commons-lang3>
         <version.fx.controls>11.1.2</version.fx.controls>
         <version.fx.validator>0.4.0</version.fx.validator>
         <version.fx.bootstrap>0.4.0</version.fx.bootstrap>
         <version.fx.tiles>17.1.17</version.fx.tiles>
-        <version.jackson>2.15.1</version.jackson>
         <version.javafx>19.0.2.1</version.javafx>
         <version.jetbrains.annotations>24.0.1</version.jetbrains.annotations>
         <version.junit>5.9.2</version.junit>
         <version.lombok>1.18.26</version.lombok>
-        <version.zip4j>2.11.5</version.zip4j>
+
 
         <!-- Build information -->
-        <build.version>17</build.version>
+        <build.version>21</build.version>
         <build.mainClass></build.mainClass>
         <build.version.maven.compiler>3.10.1</build.version.maven.compiler>
         <build.version.jfx.plugin>0.0.8</build.version.jfx.plugin>
@@ -67,11 +67,10 @@
 
     <dependencies>
 
-        <!-- https://mvnrepository.com/artifact/net.lingala.zip4j/zip4j -->
         <dependency>
-            <groupId>net.lingala.zip4j</groupId>
-            <artifactId>zip4j</artifactId>
-            <version>${version.zip4j}</version>
+            <groupId>de.haevn</groupId>
+            <artifactId>Utility</artifactId>
+            <version>${version.haevn.utils}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -81,24 +80,6 @@
             <version>${version.lombok}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${version.jackson}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${version.jackson}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-            <version>${version.jackson}</version>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>

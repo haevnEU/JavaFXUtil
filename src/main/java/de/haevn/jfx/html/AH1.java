@@ -1,6 +1,6 @@
 package de.haevn.jfx.html;
 
-import de.haevn.network.NetworkInteraction;
+import de.haevn.utils.network.NetworkInteraction;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Hyperlink;
 
