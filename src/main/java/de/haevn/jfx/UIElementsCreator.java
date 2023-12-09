@@ -72,4 +72,8 @@ public class UIElementsCreator {
 
         return isLeft ? new HBox(checkBox, new Label(text)) : new HBox(new Label(text), checkBox);
     }
+
+
+
+
 }
