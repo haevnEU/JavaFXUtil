@@ -66,10 +66,19 @@ public class UIElementsCreator {
         return tp;
     }
 
-    public static HBox createCheckBox(String text, BooleanProperty property, boolean isLeft) {
+    public static HBox createCheckBox(String text, BooleanProperty property, boolean state, boolean isLeft) {
         CheckBox checkBox = new CheckBox();
+        checkBox.setSelected(state);
         checkBox.selectedProperty().bindBidirectional(property);
 
+        return isLeft ? new HBox(checkBox, new Label(text)) : new HBox(new Label(text), checkBox);
+    }
+
+
+    public static HBox createCheckBox(String text, Runnable setter, boolean state, boolean isLeft) {
+        CheckBox checkBox = new CheckBox();
+        checkBox.setSelected(state);
+        checkBox.selectedProperty().addListener((observable, oldValue, newValue) -> setter.run());
         return isLeft ? new HBox(checkBox, new Label(text)) : new HBox(new Label(text), checkBox);
     }
 

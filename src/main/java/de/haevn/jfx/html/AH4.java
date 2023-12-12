@@ -1,11 +1,12 @@
 package de.haevn.jfx.html;
 
 import de.haevn.utils.network.NetworkInteraction;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Hyperlink;
 
 public class AH4 extends Hyperlink {
-    private String link;
+    private SimpleStringProperty link = new SimpleStringProperty("");
 
     public AH4() {
         this("", "");
@@ -19,14 +20,24 @@ public class AH4 extends Hyperlink {
         setOnAction(this::openLink);
     }
 
+
+    public SimpleStringProperty linkProperty() {
+        return link;
+    }
+
+    public String getLink(){
+        return link.get();
+    }
+
     public void setLink(String link) {
-        this.link = link;
+        this.link.set(link);
     }
 
     private void openLink(ActionEvent event) {
-        if (!link.isEmpty()) {
-            NetworkInteraction.openWebsite(link);
+        if (!link.get().isEmpty()) {
+            NetworkInteraction.openWebsite(link.get());
         }
     }
+
 
 }
