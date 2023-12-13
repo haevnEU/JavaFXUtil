@@ -1,6 +1,10 @@
 package de.haevn.jfx;
 
+import de.haevn.utils.FileIO;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ReadOnlyStringProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -83,6 +87,17 @@ public class UIElementsCreator {
     }
 
 
+    public static <T extends TextInputControl> T createTextInput(T element, String text, SimpleStringProperty property) {
+        element.textProperty().bindBidirectional(property);
+        element.setPromptText(text);
+        return element;
+    }
 
+
+    public static Label createElement(ReadOnlyStringProperty property) {
+        final Label element = new Label();
+        element.textProperty().bind(property);
+        return element;
+    }
 
 }
