@@ -1,7 +1,6 @@
 package de.haevn.jfx.properties;
 
 import javafx.application.Platform;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleFloatProperty;
 
 public class HavenFloatProperty extends SimpleFloatProperty {

@@ -2,7 +2,6 @@ package de.haevn.jfx.properties;
 
 import javafx.application.Platform;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleObjectProperty;
 
 public class HavenDoubleProperty extends SimpleDoubleProperty {
     @Override

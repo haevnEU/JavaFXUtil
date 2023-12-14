@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,7 +24,7 @@ public class ProgressWidget {
     private ProgressWidget(String title, String text) {
         final GridPane root = new GridPane();
         final Button btCancel = new Button("Cancel");
-        final ProgressBar pb = new ProgressBar(ProgressBar.INDETERMINATE_PROGRESS);
+        final ProgressBar pb = new ProgressBar(ProgressIndicator.INDETERMINATE_PROGRESS);
         pb.setMaxWidth(400);
         pb.setPrefWidth(400);
 
