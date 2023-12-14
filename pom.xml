@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.haevn</groupId>
-    <artifactId>${app.name}</artifactId>
-    <version>${app.version}</version>
-    <description>${app.description}</description>
-    <url>${app.url}</url>
+    <artifactId>JavaFXUtility</artifactId>
+    <version>1.0.0</version>
+    <description>Utility Library for JavaFX projects</description>
+    <url>https://github.com/nimile/JavaFXUtil</url>
 
     <contributors>
         <contributor>
@@ -32,19 +32,12 @@
     </developers>
 
     <properties>
-        <!-- app.data -->
-        <app.name>JavaFXUtility</app.name>
-        <app.description>Utility Library for other projects</app.description>
-        <app.url></app.url>
-        <app.version>1.0.1.0</app.version>
-        <app.build>DEV</app.build>
-        <app.preview>false</app.preview>
 
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--Versions for project-->
-        <version.haevn.utils>1.0.1.0</version.haevn.utils>
+        <version.haevn.utils>1.0.0</version.haevn.utils>
         <version.commons-io>2.11.0</version.commons-io>
         <version.commons-lang3>3.12.0</version.commons-lang3>
         <version.fx.controls>11.1.2</version.fx.controls>
