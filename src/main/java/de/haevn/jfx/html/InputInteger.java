@@ -6,7 +6,12 @@ import javafx.util.converter.IntegerStringConverter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class InputInteger extends Input {
 
 

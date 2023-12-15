@@ -7,6 +7,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class ButtonBar {
     private final Pane root;
 

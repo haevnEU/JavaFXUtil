@@ -8,7 +8,12 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 
-
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class Input extends HBox {
 
     private final TextField textField = new TextField();

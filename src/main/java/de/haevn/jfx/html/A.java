@@ -4,6 +4,12 @@ import de.haevn.utils.network.NetworkInteraction;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Hyperlink;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class A extends Hyperlink {
     private String link;
 

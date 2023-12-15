@@ -6,7 +6,12 @@ import javafx.util.converter.DoubleStringConverter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class InputNumber extends Input {
 
     public InputNumber(String prompt) {

@@ -5,6 +5,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Hyperlink;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class AH4 extends Hyperlink {
     private SimpleStringProperty link = new SimpleStringProperty("");
 

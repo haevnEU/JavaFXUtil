@@ -16,6 +16,12 @@ import javafx.stage.StageStyle;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class ProgressWidget {
     private final List<Runnable> closeActions = new ArrayList<>();
     private final Stage stage = new Stage();

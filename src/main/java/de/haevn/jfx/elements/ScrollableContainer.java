@@ -5,6 +5,13 @@ import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
+
 public class ScrollableContainer extends Pane {
     private final ScrollPane root = new ScrollPane();
 

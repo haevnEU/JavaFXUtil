@@ -3,6 +3,12 @@ package de.haevn.jfx.dialogs;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public final class AlertUtils {
     private AlertUtils() {
     }

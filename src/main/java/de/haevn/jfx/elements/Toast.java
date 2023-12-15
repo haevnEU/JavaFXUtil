@@ -5,6 +5,12 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class Toast {
     private SimpleBooleanProperty visible = new SimpleBooleanProperty(false);
     private final Pane pane = new Pane();

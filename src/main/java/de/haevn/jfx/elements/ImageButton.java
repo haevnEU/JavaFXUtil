@@ -4,6 +4,13 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
+
 public class ImageButton extends Label {
 
     public ImageButton(Image img) {

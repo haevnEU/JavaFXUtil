@@ -6,6 +6,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
+
 public class ErrorWidget extends GridPane {
 
     private final Label lblMessage = new Label();

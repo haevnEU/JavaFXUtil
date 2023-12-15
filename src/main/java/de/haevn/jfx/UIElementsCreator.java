@@ -13,6 +13,12 @@ import javafx.scene.layout.HBox;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class UIElementsCreator {
     private UIElementsCreator() {
     }

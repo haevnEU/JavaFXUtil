@@ -4,6 +4,12 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.ObservableList;
 
+/**
+ * javadoc is WIP
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ */
 public class HavenListProperty<E> extends SimpleListProperty<E> {
     @Override
     public void set(ObservableList<E> newValue) {
