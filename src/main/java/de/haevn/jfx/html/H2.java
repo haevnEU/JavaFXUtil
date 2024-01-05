@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
  * @since 1.0
  * @author haevn
  */
-public class H2 extends Label {
+public class H2 extends H {
     public H2() {
         this("");
     }
