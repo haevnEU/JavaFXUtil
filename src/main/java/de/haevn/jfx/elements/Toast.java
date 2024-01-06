@@ -1,17 +1,14 @@
 package de.haevn.jfx.elements;
 
-import javafx.animation.*;
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.CubicCurveTo;
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -23,61 +20,18 @@ import java.util.Deque;
 
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class Toast {
 
     private static Toast INSTANCE = new Toast();
-
-    public static void initialize(final Stage owner){
-        INSTANCE = new Toast(owner);
-    }
-    public static void message(final String message){
-        internalToastIt(message, Type.INFO, ToastDuration.NORMAL);
-    }
-    public static void message(final String message, ToastDuration duration){
-        internalToastIt(message, Type.INFO, duration);
-    }
-
-    public static void bad(final String message){
-        internalToastIt(message, Type.ERROR, ToastDuration.NORMAL);
-    }
-
-    public static void bad(final String message, ToastDuration duration){
-        internalToastIt(message, Type.ERROR, duration);
-    }
-
-    public static void good(final String message){
-        internalToastIt(message, Type.SUCCESS, ToastDuration.NORMAL);
-    }
-
-    public static void good(final String message, ToastDuration duration){
-        internalToastIt(message, Type.SUCCESS, duration);
-    }
-
-    public static void warn(final String message){
-        internalToastIt(message, Type.WARNING, ToastDuration.NORMAL);
-    }
-
-    public static void warn(final String message, ToastDuration duration){
-        internalToastIt(message, Type.WARNING, duration);
-    }
-
-    private static void internalToastIt(final String message, final Type type, ToastDuration duration){
-        if(null == INSTANCE) throw new IllegalStateException("Toast not initialized");
-        INSTANCE.toastIt(message, type, duration);
-
-    }
-
-
     private final Stage stage = new Stage();
     private final Deque<ToastContainer> stack = new ArrayDeque<>();
 
-    private int duration = 5000;
-
-    private Toast(final Stage owner){
+    private Toast(final Stage owner) {
         stage.initOwner(owner);
         owner.xProperty().addListener((observable, oldValue, newValue) -> INSTANCE.render());
         owner.yProperty().addListener((observable, oldValue, newValue) -> INSTANCE.render());
@@ -85,10 +39,53 @@ public class Toast {
         owner.heightProperty().addListener((observable, oldValue, newValue) -> INSTANCE.render());
     }
 
-    private Toast(){ }
+    private Toast() {
+    }
 
-    private void render(){
-        int id = 0;
+    public static void initialize(final Stage owner) {
+        INSTANCE = new Toast(owner);
+    }
+
+    public static void message(final String message) {
+        internalToastIt(message, Type.INFO, ToastDuration.NORMAL);
+    }
+
+    public static void message(final String message, ToastDuration duration) {
+        internalToastIt(message, Type.INFO, duration);
+    }
+
+    public static void bad(final String message) {
+        internalToastIt(message, Type.ERROR, ToastDuration.NORMAL);
+    }
+
+    public static void bad(final String message, ToastDuration duration) {
+        internalToastIt(message, Type.ERROR, duration);
+    }
+
+    public static void good(final String message) {
+        internalToastIt(message, Type.SUCCESS, ToastDuration.NORMAL);
+    }
+
+    public static void good(final String message, ToastDuration duration) {
+        internalToastIt(message, Type.SUCCESS, duration);
+    }
+
+    public static void warn(final String message) {
+        internalToastIt(message, Type.WARNING, ToastDuration.NORMAL);
+    }
+
+    public static void warn(final String message, ToastDuration duration) {
+        internalToastIt(message, Type.WARNING, duration);
+    }
+
+    private static void internalToastIt(final String message, final Type type, ToastDuration duration) {
+        if (null == INSTANCE) throw new IllegalStateException("Toast not initialized");
+        INSTANCE.toastIt(message, type, duration);
+
+    }
+
+    private void render() {
+        int id = 1;
         for (final ToastContainer container : stack) {
             container.render(id);
             id++;
@@ -108,13 +105,40 @@ public class Toast {
         });
     }
 
-    private static final class ToastContainer{
+    public enum ToastDuration {
+        SHORT(2000),
+        NORMAL(3000),
+        MEDIUM(5000),
+        LONG(10000);
+
+        private final int duration;
+
+        ToastDuration(final int duration) {
+            this.duration = duration;
+        }
+    }
+
+
+    private enum Type {
+        INFO("info"),
+        ERROR("error"),
+        WARNING("warning"),
+        SUCCESS("success");
+
+        private final String styleClass;
+
+        Type(final String css) {
+            this.styleClass = "toast-" + css;
+        }
+    }
+
+    private static final class ToastContainer {
         private static final int WIDTH = 300;
         private static final int HEIGHT = 50;
         final Stage toastStage = new Stage();
         private final SimpleBooleanProperty hidden = new SimpleBooleanProperty(false);
 
-        ToastContainer(final String message, final Type type, ToastDuration duration){
+        ToastContainer(final String message, final Type type, ToastDuration duration) {
             toastStage.initOwner(INSTANCE.stage.getOwner());
             toastStage.setResizable(false);
             toastStage.initStyle(StageStyle.TRANSPARENT);
@@ -161,37 +185,12 @@ public class Toast {
             toastStage.close();
         }
 
-        public void render(final int id){
+        public void render(final int id) {
             final var owner = INSTANCE.stage.getOwner();
-                toastStage.setX(owner.getX() + owner.getWidth() - (WIDTH + 20));
-                toastStage.setY(owner.getY() + owner.getHeight() - (HEIGHT + 10) * id - 10);
+            toastStage.setX(owner.getX() + owner.getWidth() - (WIDTH + 20));
+            toastStage.setY(owner.getY() + owner.getHeight() - (HEIGHT + 10) * id - 10);
         }
 
-    }
-
-
-    public enum ToastDuration{
-        SHORT(2000),
-        NORMAL(3000),
-        MEDIUM(5000),
-        LONG(10000);
-
-        private final int duration;
-        ToastDuration(final int duration){
-            this.duration = duration;
-        }
-    }
-
-    private enum Type{
-        INFO("info"),
-        ERROR("error"),
-        WARNING("warning"),
-        SUCCESS("success");
-
-        private final String styleClass;
-        private Type(final String css){
-            this.styleClass = "toast-" + css;
-        }
     }
 
 }
