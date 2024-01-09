@@ -7,12 +7,13 @@ import javafx.scene.control.Hyperlink;
 
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class AH2 extends Hyperlink {
-    private SimpleStringProperty link = new SimpleStringProperty("");
+    private final SimpleStringProperty link = new SimpleStringProperty("");
 
     public AH2() {
         this("", "");
@@ -30,7 +31,7 @@ public class AH2 extends Hyperlink {
         return link;
     }
 
-    public String getLink(){
+    public String getLink() {
         return link.get();
     }
 

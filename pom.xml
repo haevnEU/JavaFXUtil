@@ -35,7 +35,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!--Versions for project-->
-        <version.haevn.utils>1.1.0</version.haevn.utils>
+        <version.haevn.utils>1.1.1</version.haevn.utils>
         <version.commons-io>2.11.0</version.commons-io>
         <version.commons-lang3>3.12.0</version.commons-lang3>
         <version.fx.controls>11.1.2</version.fx.controls>

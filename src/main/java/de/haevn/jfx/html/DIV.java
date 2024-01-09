@@ -5,9 +5,10 @@ import javafx.scene.layout.Pane;
 
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class DIV extends Pane {
 

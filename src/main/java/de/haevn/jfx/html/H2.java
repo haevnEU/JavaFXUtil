@@ -1,12 +1,11 @@
 package de.haevn.jfx.html;
 
-import javafx.scene.control.Label;
-
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class H2 extends H {
     public H2() {

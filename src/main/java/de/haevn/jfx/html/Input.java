@@ -10,9 +10,10 @@ import javafx.scene.layout.Priority;
 
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class Input extends HBox {
 

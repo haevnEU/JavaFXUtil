@@ -8,9 +8,10 @@ import java.util.regex.Pattern;
 
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class InputNumber extends Input {
 
