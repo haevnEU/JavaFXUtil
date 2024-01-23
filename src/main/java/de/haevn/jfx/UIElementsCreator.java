@@ -1,7 +1,8 @@
 package de.haevn.jfx;
 
+import de.haevn.jfx.tools.creation.elements.ButtonCreator;
+import de.haevn.jfx.tools.creation.elements.LabelCreator;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,35 +16,30 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * javadoc is WIP
+ *
+ * @author haevn
  * @version 1.0
  * @since 1.0
- * @author haevn
  */
 public class UIElementsCreator {
     private UIElementsCreator() {
     }
 
     public static Button createButton(String title, EventHandler<ActionEvent> event) {
-        return createButton(title, 150, event);
+        return ButtonCreator.start(title).withOnClick(event).build();
     }
 
     public static Button createButton(String title, Runnable event) {
-        return createButton(title, 150, event);
+        return ButtonCreator.start(title).withOnClick(event).build();
     }
 
 
     public static Button createButton(String title, double width, Runnable event) {
-        return createButton(title, width, e -> event.run());
+        return ButtonCreator.start(title).withWidth(width).withOnClick(event).build();
     }
+
     public static Button createButton(String title, double width, EventHandler<ActionEvent> event) {
-        Button button = new Button(title);
-        button.setOnAction(event);
-        if (width > 0) {
-            button.setPrefWidth(width);
-            button.setMaxWidth(width);
-            button.setMinWidth(width);
-        }
-        return button;
+        return ButtonCreator.start(title).withWidth(width).withOnClick(event).build();
     }
 
     public static Tab createTab(String title, Node node) {
@@ -98,10 +94,8 @@ public class UIElementsCreator {
     }
 
 
-    public static Label createElement(ReadOnlyStringProperty property) {
-        final Label element = new Label();
-        element.textProperty().bind(property);
-        return element;
+    public static Label createElement(SimpleStringProperty property) {
+        return LabelCreator.start("").withTextProperty(property).build();
     }
 
 }
