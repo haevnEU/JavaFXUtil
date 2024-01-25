@@ -30,10 +30,8 @@ public interface ILabeledCreator {
      */
     ILabeledCreator withTextProperty(final SimpleStringProperty textProperty);
 
-    /**
-     * Builds the element
-     *
-     * @return the element
-     */
-    Control build();
+    default ILabeledCreator withReadonly() {
+        return this;
+    }
+
 }

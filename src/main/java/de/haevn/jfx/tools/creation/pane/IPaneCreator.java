@@ -10,12 +10,31 @@ import javafx.scene.layout.Pane;
  * @see Pane
  * @since 1.1
  */
-public interface IPaneCreator {
+public interface IPaneCreator<T> {
+    /**
+     * Sets the width of the {@link Pane}
+     *
+     * @param padding the padding
+     * @return the builder
+     */
+    IPaneCreator<T> withPadding(double padding);
 
     /**
-     * Builds the pane
+     * Sets the width of the {@link Pane}
      *
-     * @return the pane
+     * @param top    the top padding
+     * @param right  the right padding
+     * @param bottom the bottom padding
+     * @param left   the left padding
+     * @return the builder
      */
-    Pane build();
+    IPaneCreator<T> withPadding(double top, double right, double bottom, double left);
+
+    /**
+     * Sets the width of the {@link Pane}
+     *
+     * @param spacing the spacing
+     * @return the builder
+     */
+    IPaneCreator<T> withSpacing(double spacing);
 }

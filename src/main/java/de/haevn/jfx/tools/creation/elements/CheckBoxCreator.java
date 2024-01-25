@@ -1,10 +1,13 @@
 package de.haevn.jfx.tools.creation.elements;
 
 import de.haevn.jfx.tools.creation.BaseCreator;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.Property;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 
 /**
@@ -15,90 +18,75 @@ import javafx.scene.control.CheckBox;
  * @see CheckBox
  * @since 1.1
  */
-public class CheckBoxCreator implements ILabeledCreator {
+public class CheckBoxCreator extends BaseCreator<CheckBox, CheckBoxCreator> implements ILabeledCreator {
 
-    private final CheckBox obj = new CheckBox();
-    private final BaseCreator<CheckBox> baseCreator;
+    private Property<Boolean> selectedProperty = null;
+    private ChangeListener<Boolean> changeListener = null;
 
     private CheckBoxCreator() {
-        baseCreator = new BaseCreator<>(obj);
+        super(new CheckBox());
+        super.setInstance(this);
     }
 
     public static CheckBoxCreator start(final String title) {
         return new CheckBoxCreator().withText(title);
     }
 
-
-    //----------------------------------------------------------------------------------------------------------------------
-    // Methods from BaseCreator
-    //----------------------------------------------------------------------------------------------------------------------
-
-    public CheckBoxCreator withStyle(final String style) {
-        baseCreator.withStyle(style);
-        return this;
-    }
-
-    public CheckBoxCreator withStyleClass(final String... styleClass) {
-        baseCreator.withStyleClass(styleClass);
-        return this;
-    }
-
-    public CheckBoxCreator withId(final String id) {
-        baseCreator.withId(id);
-        return this;
-    }
-
-    public CheckBoxCreator withHeight(final double height) {
-        baseCreator.withHeight(height);
-        return this;
-    }
-
-
-    public CheckBoxCreator withDisable(boolean disable) {
-        baseCreator.withDisable(disable);
-        return this;
-    }
-
-    public CheckBoxCreator withWidth(final double width) {
-        baseCreator.withWidth(width);
-        return this;
-    }
-
-
-    //----------------------------------------------------------------------------------------------------------------------
-    //  Concrete  methods for Checkbox
-    //----------------------------------------------------------------------------------------------------------------------
-
-
     @Override
     public CheckBoxCreator withText(String text) {
-        obj.setText(text);
+        object.setText(text);
         return this;
     }
 
     @Override
     public CheckBoxCreator withTextProperty(SimpleStringProperty textProperty) {
-        obj.textProperty().bind(textProperty);
+        object.textProperty().bind(textProperty);
         return this;
     }
 
     public CheckBoxCreator withSelected(boolean selected) {
-        obj.setSelected(selected);
+        object.setSelected(selected);
         return this;
     }
 
-    public CheckBoxCreator withToggleAction(Runnable action) {
-        obj.selectedProperty().addListener((ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) -> action.run());
+    public CheckBoxCreator withSelectedProperty(BooleanProperty selectedProperty) {
+        this.selectedProperty = selectedProperty;
         return this;
     }
 
-    public CheckBoxCreator withToggleAction(final ChangeListener<Boolean> action) {
-        obj.selectedProperty().addListener(action);
+    public CheckBoxCreator withSelectionChanged(final Runnable event) {
+        changeListener = (observable, oldValue, newValue) -> event.run();
+        return this;
+    }
+
+    public CheckBoxCreator withSelectionChanged(final ChangeListener<Boolean> event) {
+        changeListener = event;
+        return this;
+    }
+
+    public CheckBoxCreator withIndeterminate(boolean indeterminate) {
+        object.setIndeterminate(indeterminate);
+        return this;
+    }
+
+    @Override
+    public CheckBoxCreator withReadonly() {
+        object.setDisable(true);
         return this;
     }
 
     @Override
     public CheckBox build() {
-        return obj;
+        if (null != selectedProperty) object.selectedProperty().bindBidirectional(selectedProperty);
+        if (null != changeListener) object.selectedProperty().addListener(changeListener);
+        return super.build();
+    }
+
+    public HBox buildWIthBox(final boolean isLeft) {
+        final Label title = LabelCreator.start(object.getText()).build();
+        object.setText("");
+        final var box = isLeft ? new HBox(build(), title) : new HBox(title, build());
+        box.setSpacing(10);
+        return box;
     }
 }

@@ -13,71 +13,30 @@ import javafx.scene.control.Label;
  * @see Label
  * @since 1.1
  */
-public class LabelCreator implements ILabeledCreator {
-    private final Label label = new Label();
-    private final BaseCreator<Label> baseCreator;
+public class LabelCreator extends BaseCreator<Label, LabelCreator> implements ILabeledCreator {
 
     private LabelCreator() {
-        baseCreator = new BaseCreator<>(label);
+        super(new Label());
+        super.setInstance(this);
     }
 
     public static LabelCreator start(final String title) {
         return new LabelCreator().withText(title);
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
-    // Methods from BaseCreator
-    //----------------------------------------------------------------------------------------------------------------------
-
-    public LabelCreator withStyle(final String style) {
-        baseCreator.withStyle(style);
-        return this;
+    public static LabelCreator start(final SimpleStringProperty title) {
+        return new LabelCreator().withTextProperty(title);
     }
-
-    public LabelCreator withStyleClass(final String... styleClass) {
-        baseCreator.withStyleClass(styleClass);
-        return this;
-    }
-
-    public LabelCreator withId(final String id) {
-        baseCreator.withId(id);
-        return this;
-    }
-
-    public LabelCreator withHeight(final double height) {
-        baseCreator.withHeight(height);
-        return this;
-    }
-
-
-    public LabelCreator withDisable(boolean disable) {
-        baseCreator.withDisable(disable);
-        return this;
-    }
-
-    public LabelCreator withWidth(final double width) {
-        baseCreator.withWidth(width);
-        return this;
-    }
-
-    //----------------------------------------------------------------------------------------------------------------------
-    //  Concrete  methods for Label
-    //----------------------------------------------------------------------------------------------------------------------
 
     @Override
     public LabelCreator withText(String text) {
-        label.setText(text);
+        object.setText(text);
         return this;
     }
 
     @Override
     public LabelCreator withTextProperty(SimpleStringProperty textProperty) {
-        label.textProperty().bind(textProperty);
+        object.textProperty().bind(textProperty);
         return this;
-    }
-
-    @Override
-    public Label build() {
-        return label;
     }
 }

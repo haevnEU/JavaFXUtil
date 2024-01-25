@@ -3,6 +3,7 @@ package de.haevn.jfx.tools.creation.pane;
 import de.haevn.jfx.tools.creation.BaseCreator;
 import de.haevn.jfx.tools.creation.elements.LabelCreator;
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -20,59 +21,20 @@ import java.util.Map;
  * @see GridPane
  * @since 1.1
  */
-public class FormCreator {
-    private final GridPane root = new GridPane();
-    final BaseCreator<GridPane> baseCreator = new BaseCreator<>(root);
+public class FormCreator extends BaseCreator<GridPane, FormCreator> implements IPaneCreator<GridPane> {
     private int rows = 0;
 
     private FormCreator() {
-        root.setHgap(10);
-        root.setVgap(10);
+        super(new GridPane());
+        super.setInstance(this);
+        object.setHgap(10);
+        object.setVgap(10);
     }
 
     public static FormCreator start() {
         return new FormCreator();
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
-    // Methods from BaseCreator
-    //----------------------------------------------------------------------------------------------------------------------
-
-    public FormCreator withStyle(final String style) {
-        baseCreator.withStyle(style);
-        return this;
-    }
-
-    public FormCreator withStyleClass(final String... styleClass) {
-        baseCreator.withStyleClass(styleClass);
-        return this;
-    }
-
-    public FormCreator withId(final String id) {
-        baseCreator.withId(id);
-        return this;
-    }
-
-    public FormCreator withHeight(final double height) {
-        baseCreator.withHeight(height);
-        return this;
-    }
-
-
-    public FormCreator withDisable(boolean disable) {
-        baseCreator.withDisable(disable);
-        return this;
-    }
-
-    public FormCreator withWidth(final double width) {
-        baseCreator.withWidth(width);
-        return this;
-    }
-
-
-    //----------------------------------------------------------------------------------------------------------------------
-    //  Concrete  methods for the Form
-    //----------------------------------------------------------------------------------------------------------------------
 
     public FormCreator withDescriptionPercentageWidth(double percent) {
         if (percent > 100 || percent < 0) throw new IllegalArgumentException("Percent must be between 0 and 100");
@@ -83,7 +45,7 @@ public class FormCreator {
         ColumnConstraints secondColumnConstraints = new ColumnConstraints();
         secondColumnConstraints.setPercentWidth(100 - percent);
 
-        root.getColumnConstraints().addAll(firstColumnConstraints, secondColumnConstraints);
+        object.getColumnConstraints().addAll(firstColumnConstraints, secondColumnConstraints);
         return this;
     }
 
@@ -92,7 +54,7 @@ public class FormCreator {
         firstColumnConstraints.setMinWidth(percent);
         firstColumnConstraints.setMaxWidth(percent);
 
-        root.getColumnConstraints().addAll(firstColumnConstraints);
+        object.getColumnConstraints().addAll(firstColumnConstraints);
         return this;
     }
 
@@ -108,8 +70,8 @@ public class FormCreator {
         GridPane.setHalignment(control, HPos.LEFT);
         GridPane.setValignment(control, VPos.TOP);
 
-        root.add(label, 0, rows);
-        root.add(control, 1, rows);
+        object.add(label, 0, rows);
+        object.add(control, 1, rows);
         GridPane.setVgrow(control, expand ? javafx.scene.layout.Priority.ALWAYS : javafx.scene.layout.Priority.NEVER);
         GridPane.setHgrow(control, javafx.scene.layout.Priority.ALWAYS);
         rows++;
@@ -121,7 +83,22 @@ public class FormCreator {
         return this;
     }
 
-    public GridPane build() {
-        return root;
+
+    @Override
+    public FormCreator withPadding(double padding) {
+        return withPadding(padding, padding, padding, padding);
+    }
+
+    @Override
+    public FormCreator withPadding(double top, double right, double bottom, double left) {
+        object.setPadding(new Insets(top, right, bottom, left));
+        return this;
+    }
+
+    @Override
+    public FormCreator withSpacing(double spacing) {
+        object.setHgap(10);
+        object.setVgap(10);
+        return this;
     }
 }

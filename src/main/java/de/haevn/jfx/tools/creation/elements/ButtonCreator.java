@@ -15,82 +15,42 @@ import javafx.scene.control.Button;
  * @see Button
  * @since 1.1
  */
-public final class ButtonCreator implements ILabeledCreator {
-    private final Button button = new Button();
-    private final BaseCreator<Button> baseCreator;
+public final class ButtonCreator extends BaseCreator<Button, ButtonCreator> implements ILabeledCreator {
 
     private ButtonCreator() {
-        baseCreator = new BaseCreator<>(button);
+        super(new Button());
+        super.setInstance(this);
     }
-
 
     public static ButtonCreator start(final String title) {
         return new ButtonCreator().withText(title);
     }
-    //----------------------------------------------------------------------------------------------------------------------
-    // Methods from BaseCreator
-    //----------------------------------------------------------------------------------------------------------------------
-
-    public ButtonCreator withStyle(final String style) {
-        baseCreator.withStyle(style);
-        return this;
-    }
-
-    public ButtonCreator withStyleClass(final String... styleClass) {
-        baseCreator.withStyleClass(styleClass);
-        return this;
-    }
-
-    public ButtonCreator withId(final String id) {
-        baseCreator.withId(id);
-        return this;
-    }
-
-    public ButtonCreator withHeight(final double height) {
-        baseCreator.withHeight(height);
-        return this;
-    }
-
-
-    public ButtonCreator withDisable(boolean disable) {
-        baseCreator.withDisable(disable);
-        return this;
-    }
-
-    public ButtonCreator withWidth(final double width) {
-        baseCreator.withWidth(width);
-        return this;
-    }
-
-    //----------------------------------------------------------------------------------------------------------------------
-    //  Concrete  methods for Button
-    //----------------------------------------------------------------------------------------------------------------------
-
 
     @Override
     public ILabeledCreator withTextProperty(SimpleStringProperty textProperty) {
-        button.textProperty().bind(textProperty);
+        object.textProperty().bind(textProperty);
         return this;
     }
 
     @Override
     public ButtonCreator withText(String text) {
-        button.setText(text);
+        object.setText(text);
         return this;
     }
 
     public ButtonCreator withOnClick(final Runnable event) {
-        button.setOnAction(e -> event.run());
+        object.setOnAction(e -> event.run());
+        return this;
+    }
+
+    @Override
+    public ButtonCreator withReadonly() {
+        object.setDisable(true);
         return this;
     }
 
     public ButtonCreator withOnClick(final EventHandler<ActionEvent> event) {
-        button.setOnAction(event);
+        object.setOnAction(event);
         return this;
     }
-
-    public Button build() {
-        return button;
-    }
-
 }
