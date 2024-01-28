@@ -3,10 +3,11 @@ package de.haevn.jfx.elements.menu;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.scene.control.CheckBox;
 
-public class CheckBoxMenu extends AbstractCustomMenuItem<CheckBox> {
+public class CheckBoxMenu extends AbstractCustomMenuItem<CheckBox, CheckBoxMenu> {
     public CheckBoxMenu(String title, Runnable action) {
         super(new CheckBox(), action);
-
+        super.setReference(this);
+        item.setText(title);
     }
 
     public boolean isSelected() {

@@ -4,9 +4,10 @@ import de.haevn.jfx.tools.creation.elements.TextInputCreator;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextField;
 
-public class TextFieldMenu extends AbstractCustomMenuItem<TextField> {
+public class TextFieldMenu extends AbstractCustomMenuItem<TextField, TextFieldMenu> {
     public TextFieldMenu(String prompt, Runnable action) {
-        super(TextInputCreator.startTextField("").withPromptText("").buildTextField(), action);
+        super(TextInputCreator.startTextField("").withPromptText(prompt).buildTextField(), action);
+        super.setReference(this);
     }
 
     public TextFieldMenu(String title, Runnable action, String defaultValue) {

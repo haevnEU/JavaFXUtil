@@ -2,10 +2,14 @@ package de.haevn.jfx.elements.menu;
 
 import javafx.beans.property.ReadOnlyDoubleProperty;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Tooltip;
+import javafx.scene.layout.HBox;
 
-public class SliderMenu extends AbstractCustomMenuItem<Slider> {
+public class SliderMenu extends AbstractCustomMenuItem<Slider, SliderMenu> {
     public SliderMenu(String title, Runnable action) {
         super(new Slider(), action);
+        super.setReference(this);
+        item.setTooltip(new Tooltip(title));
     }
 
     public double getValue() {
