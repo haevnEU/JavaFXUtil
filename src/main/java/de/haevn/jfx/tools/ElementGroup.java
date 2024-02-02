@@ -1,14 +1,16 @@
 package de.haevn.jfx.tools;
 
 
+import de.haevn.jfx.elements.menu.SliderMenu;
 import javafx.scene.control.Control;
+import javafx.scene.layout.Region;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ElementGroup {
-    private final List<Control> nodes = new ArrayList<>();
+    private final List<Region> nodes = new ArrayList<>();
 
     public ElementGroup() {
     }
@@ -78,7 +80,7 @@ public class ElementGroup {
 
 
 
-    public List<Control> getElements() {
+    public List<Region> getElements() {
         return nodes;
     }
 }
