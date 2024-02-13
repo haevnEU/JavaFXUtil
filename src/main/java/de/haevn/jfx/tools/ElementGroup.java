@@ -13,6 +13,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This is a simple class for grouping elements.
+ * @version 1.0
+ * @since 1.0
+ * @author haevn
+ *
+ */
 public class ElementGroup {
     private final List<Region> nodes = new ArrayList<>();
 
