@@ -41,3 +41,4 @@ build/
 **/*.iml
 **/.mvn/**
 **/target/**
+/src/main/java/de/haevn/jfx/RunnableTest.java
