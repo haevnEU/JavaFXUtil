@@ -6,7 +6,7 @@
 
     <groupId>de.haevn</groupId>
     <artifactId>JavaFXUtility</artifactId>
-    <version>1.2</version>
+    <version>1.1.1</version>
     <description>Utility Library for JavaFX projects</description>
     <url>https://github.com/nimile/JavaFXUtil</url>
 
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>de.haevn</groupId>
             <artifactId>Utility</artifactId>
-            <version>1.2</version>
+            <version>1.1.1</version>
         </dependency>
 
         <!-- javaFX -->
