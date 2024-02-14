@@ -12,6 +12,7 @@ import javafx.scene.layout.Region;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * This is a simple class for grouping elements.
@@ -291,6 +292,10 @@ public class ElementGroup {
 
     public List<Region> getElements() {
         return nodes;
+    }
+
+    public Stream<Region> getElementStream(){
+        return nodes.stream();
     }
 
 }
