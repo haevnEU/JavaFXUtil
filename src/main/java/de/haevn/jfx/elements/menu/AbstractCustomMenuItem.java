@@ -36,7 +36,6 @@ public abstract class AbstractCustomMenuItem<T extends Control, K> extends Menu 
     }
 
     public K disable(){
-        setDisable(true);
-        return obj;
+        return withDisabled();
     }
 }

@@ -27,23 +27,23 @@ import java.util.Deque;
  */
 public class Toast {
 
-    private static Toast toasting_instance = new Toast();
+    private static Toast toastingInstance = new Toast();
     private final Stage stage = new Stage();
     private final Deque<ToastContainer> stack = new ArrayDeque<>();
 
     private Toast(final Stage owner) {
         stage.initOwner(owner);
-        owner.xProperty().addListener((observable, oldValue, newValue) -> toasting_instance.render());
-        owner.yProperty().addListener((observable, oldValue, newValue) -> toasting_instance.render());
-        owner.widthProperty().addListener((observable, oldValue, newValue) -> toasting_instance.render());
-        owner.heightProperty().addListener((observable, oldValue, newValue) -> toasting_instance.render());
+        owner.xProperty().addListener((observable, oldValue, newValue) -> toastingInstance.render());
+        owner.yProperty().addListener((observable, oldValue, newValue) -> toastingInstance.render());
+        owner.widthProperty().addListener((observable, oldValue, newValue) -> toastingInstance.render());
+        owner.heightProperty().addListener((observable, oldValue, newValue) -> toastingInstance.render());
     }
 
     private Toast() {
     }
 
     public static void initialize(final Stage owner) {
-        toasting_instance = new Toast(owner);
+        toastingInstance = new Toast(owner);
     }
 
     public static void message(final String message) {
@@ -79,8 +79,8 @@ public class Toast {
     }
 
     private static void internalToastIt(final String message, final Type type, ToastDuration duration) {
-        if (null == toasting_instance) throw new IllegalStateException("Toast not initialized");
-        toasting_instance.toastIt(message, type, duration);
+        if (null == toastingInstance) throw new IllegalStateException("Toast not initialized");
+        toastingInstance.toastIt(message, type, duration);
 
     }
 
@@ -139,7 +139,7 @@ public class Toast {
         private final SimpleBooleanProperty hidden = new SimpleBooleanProperty(false);
 
         ToastContainer(final String message, final Type type, ToastDuration duration) {
-            toastStage.initOwner(toasting_instance.stage.getOwner());
+            toastStage.initOwner(toastingInstance.stage.getOwner());
             toastStage.setResizable(false);
             toastStage.initStyle(StageStyle.TRANSPARENT);
 
@@ -186,7 +186,7 @@ public class Toast {
         }
 
         public void render(final int id) {
-            final var owner = toasting_instance.stage.getOwner();
+            final var owner = toastingInstance.stage.getOwner();
             toastStage.setX(owner.getX() + owner.getWidth() - (WIDTH + 20));
             toastStage.setY(owner.getY() + owner.getHeight() - (HEIGHT + 10) * id - 10);
         }

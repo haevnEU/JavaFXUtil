@@ -272,7 +272,6 @@ public class ElementGroup {
 
 
     public ElementGroup enable() {
-        Region region = new Region();
         return setEnabled(true);
     }
 
