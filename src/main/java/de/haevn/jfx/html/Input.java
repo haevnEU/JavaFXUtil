@@ -50,6 +50,7 @@ public class Input extends HBox {
         getChildren().addAll(textField, btClear, btCopy);
         setSpacing(10);
         HBox.setHgrow(textField, Priority.ALWAYS);
+        textField.getStyleClass().add("haevn-text");
     }
 
     public static Input create(String prompt) {

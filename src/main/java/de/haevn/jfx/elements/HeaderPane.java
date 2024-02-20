@@ -1,8 +1,8 @@
 package de.haevn.jfx.elements;
 
 
-import de.haevn.jfx.html.AH1;
-import de.haevn.jfx.html.H1;
+import de.haevn.jfx.html.A;
+import de.haevn.jfx.html.H;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -12,11 +12,11 @@ import javafx.scene.layout.VBox;
 public class HeaderPane extends VBox {
     private Pane content = null;
     public HeaderPane(final String title) {
-        this(new H1(title));
+        this(H.ofH1(title));
     }
 
     public HeaderPane(final String title, final String link) {
-        this(new AH1(title, link));
+        this(A.ofAH1(title, link));
     }
 
     private HeaderPane(final Node title){

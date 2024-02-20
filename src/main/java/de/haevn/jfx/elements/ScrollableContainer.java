@@ -1,6 +1,7 @@
 package de.haevn.jfx.elements;
 
-import de.haevn.jfx.html.H1;
+
+import de.haevn.jfx.html.H;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Pane;
@@ -27,7 +28,7 @@ public class ScrollableContainer extends Pane {
 
         getStyleClass().addAll("jfx-scrollable-container");
 
-        getChildren().addAll(new H1(text), root);
+        getChildren().addAll(H.ofH1(text), root);
 
         root.setStyle("-fx-background: transparent; -fx-background-color: transparent;");
         root.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);

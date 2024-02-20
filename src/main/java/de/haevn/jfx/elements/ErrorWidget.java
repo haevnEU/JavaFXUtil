@@ -1,6 +1,7 @@
 package de.haevn.jfx.elements;
 
-import de.haevn.jfx.html.H2;
+
+import de.haevn.jfx.html.H;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,7 +27,7 @@ public class ErrorWidget extends GridPane {
     }
 
     public ErrorWidget(String title, String message, String imageUrl) {
-        add(new H2(title), 0, 0);
+        add(H.ofH2(title), 0, 0);
         add(lblMessage, 0, 1);
 
         if (null != imageUrl && !imageUrl.isEmpty()) {

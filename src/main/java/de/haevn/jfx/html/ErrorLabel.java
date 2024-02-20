@@ -13,14 +13,12 @@ public class ErrorLabel extends Label {
     public ErrorLabel() {
         this("");
     }
-
-    public ErrorLabel(String text) {
-        this(text, "red");
+    public ErrorLabel(final String text) {
+        this(text, 12);
     }
 
-    public ErrorLabel(String text, String color) {
-        getStyleClass().add("html-label-error");
+    public ErrorLabel(String text, final int size) {
         setText(text);
-        setStyle("-fx-text-fill: " + color + ";-fx-font-weight: bolder");
+        setStyle("-fx-text-fill: red; -fx-font-size: " + size + "; -fx-font-weight: bolder");
     }
 }
