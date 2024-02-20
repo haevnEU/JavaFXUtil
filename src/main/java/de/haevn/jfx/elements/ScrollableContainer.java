@@ -30,8 +30,8 @@ public class ScrollableContainer extends Pane {
         getChildren().addAll(new H1(text), root);
 
         root.setStyle("-fx-background: transparent; -fx-background-color: transparent;");
-        root.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        root.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        root.setHbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        root.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         setContent(content);
     }
 
